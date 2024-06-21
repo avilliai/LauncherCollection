@@ -247,12 +247,21 @@ class Application(ttk.Frame):
         self.status_bar.update_status()
     def on_closing(self):
         print("closing")
-        self.frame1.keep_alive = False
-        self.frame2.keep_alive = False
-        self.frame21.keep_alive = False
-        self.frame1.killself()
-        self.frame2.killself()
-        self.frame21.killself()
+        try:
+            self.frame1.keep_alive = False
+            self.frame1.killself()
+        except:
+            pass
+        try:
+            self.frame2.keep_alive = False
+            self.frame2.killself()
+        except:
+            pass
+        try:
+            self.frame21.keep_alive = False
+            self.frame21.killself()
+        except:
+            pass
         try:
             root.destroy()
         except Exception as e:
